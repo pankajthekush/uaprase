@@ -113,8 +113,8 @@ def gt_pages(soup:BeautifulSoup):
 
 def parse_upload():
     ua_from_html()
-    #parse_ua_csv()
-    #insert_to_db()
+    parse_ua_csv()
+    insert_to_db()
 
 if __name__ == "__main__":
     insert_to_db()
