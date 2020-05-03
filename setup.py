@@ -9,7 +9,7 @@ current_path  = os.path.dirname(os.path.realpath(__file__))
 
 setup(
     name='uaparse',
-    version='1.1',
+    version='1.2',
     packages=['uaparse'],
     install_requires=['SQLAlchemy>=1.3.16','beautifulsoup4>=4.9.0','ua-parser>=0.10.0'],
     entry_points ={'console_scripts': ['parseupload = uaparse.parseua:parse_upload',
