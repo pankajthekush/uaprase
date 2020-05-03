@@ -6,29 +6,32 @@ import json
 
 current_path = os.path.dirname(os.path.realpath(__file__))
 
-def browse_file_path(title_text="Choose File"):
-    root = tk.Tk()
-    root.withdraw()
-    file_path = filedialog.askopenfilename(filetypes =(("json files", "*.json"),("All Files","*.*")),
-                           title = title_text)
-    return file_path
 
 
-def copy_file_to(copyto,replace_file = False,title_text = 'Choose File'):
-
-    already_exist = os.path.exists(copyto)
-    if already_exist and not replace_file:
-        print("File already exists")
+d_list = ['dbname','user','host','password','ApplicationName']
+def create_db_file():
+    jobj = None
+    config_file_path = os.path.join(current_path,'dbdata.json')
+    if os.path.exists(config_file_path):
+        with open(config_file_path,'r',encoding='utf-8') as f:
+            jobj = json.load(f)
+            jobj = jobj[0] #expecting list of dictionary 
+            all_keys = jobj.keys()
+        return jobj
     else:
-        c_driver = browse_file_path(title_text=title_text)
-        cdriver = None
-        with open(c_driver,'rb') as f:
-            cdriver = f.read()
-        with open(copyto,'wb') as f:
-            f.write(cdriver)
-        print(f'copied {c_driver} to {copyto}')
+        #if file does not exists
+        jobj = dict()
+        all_keys = jobj.keys()
+        for element in d_list:
+            if not element in all_keys:
+                jobj[element] = input(f'enter value for {element} :')
+        with open(config_file_path,'w',encoding='utf-8') as fp:       
+            jlist = list()
+            jlist.append(jobj)
+            json.dump(jlist,fp)
+        return jobj
 
-copy_file_to(os.path.join(current_path ,'dbdata.json'))
+create_db_file()
 
 def pgconnstring():
     connstring = None

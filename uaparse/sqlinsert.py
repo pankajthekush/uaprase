@@ -1,5 +1,5 @@
 #import local methods
-from shelp import copy_file_to
+from shelp import create_db_file
 from shelp import pgconnstring
 
 #import sqlachemy data
@@ -28,6 +28,7 @@ class UserAgent(Base):
     device_brand = Column(String)
     device_model = Column(String)
     remarks = Column(String)
+    popularity = Column(String)
 
 #create table
 

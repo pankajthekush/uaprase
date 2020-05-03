@@ -109,5 +109,4 @@ if __name__ == "__main__":
         for url in v:
             cwriter.writerow([url])
           
-        
     f.close()
