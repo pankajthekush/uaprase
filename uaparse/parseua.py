@@ -52,13 +52,17 @@ def insert_to_db(in_file_name = 'outcsv.csv'):
     session = return_session()
     with open(in_file_name,'r',newline='',encoding='utf-8-sig') as f:
         creader = csv.reader(f)
-        for row in creader:
+        for index,row in enumerate(creader):
+            
             ua = UserAgent(user_agent = row[0],browser_name =row[1],browser_version= row[2] ,
                             os_name =row[3] ,os_version =row[4] ,device_name= row[5] ,device_brand =row[6] ,
                             device_model=row[7] ,remarks = '',popularity = row[8]
                          )
             session.merge(ua)
-
+            
+            if index % 1000 == 0:
+                session.flush()
+          
     session.commit()
     session.close()
 
@@ -113,5 +117,5 @@ def parse_upload():
     #insert_to_db()
 
 if __name__ == "__main__":
-    parse_upload()
+    insert_to_db()
    
