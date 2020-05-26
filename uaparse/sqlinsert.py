@@ -35,7 +35,7 @@ class UserAgent(Base):
 
 def return_session():
     connection_string = pgconnstring()
-    engine = create_engine(connection_string,echo=True)
+    engine = create_engine(connection_string,echo=False)
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
