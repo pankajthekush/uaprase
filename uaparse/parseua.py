@@ -59,12 +59,9 @@ def insert_to_db(in_file_name = 'outcsv.csv'):
                             device_model=row[7] ,remarks = '',popularity = row[8]
                          )
             session.merge(ua)
-            
-            if index % 1000 == 0:
-                session.flush()
-                session.commit()
+            session.commit()
           
-    session.commit()
+   
     session.close()
 
 def ua_from_html():
