@@ -63,7 +63,7 @@ def insert_to_db(in_file_name = 'outcsv.csv'):
             if index % 1000 == 0:
                 session.commit()
                 
-          
+        
     session.commit()
     session.close()
 
