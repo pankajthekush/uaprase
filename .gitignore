@@ -126,3 +126,4 @@ dmypy.json
 *.html
 *.csv
 *.json
+uaparse/dbdata.json
