@@ -118,5 +118,5 @@ def parse_upload():
     insert_to_db()
 
 if __name__ == "__main__":
-    insert_to_db()
+    parse_ua_text('Mozilla/5.0 (iPhone; CPU iPhone OS 14_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1')
    
